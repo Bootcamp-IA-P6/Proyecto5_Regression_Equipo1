@@ -1,14 +1,17 @@
 [theme]
-# Fondo principal muy oscuro para que resalten los colores
-backgroundColor="#0E0B16" 
+# Paleta de colores PÚRPURA coherente
 
-# Color de los widgets y controles secundarios (un púrpura oscuro)
-secondaryBackgroundColor="#241B35" 
+# Color primario - Magenta neón para botones
+primaryColor = "#E800FF"
 
-# El color principal para botones y acentos (el magenta brillante de la foto)
-primaryColor="#E800FF" 
+# Fondo principal - Púrpura medio (coherente con sidebar)
+backgroundColor = "#764ba2"
 
-# Color del texto principal para que sea legible
-textColor="#FAFAFA" 
+# Fondo secundario - Púrpura oscuro para widgets
+secondaryBackgroundColor = "#764ba2"
 
-font="sans serif"
+# Color del texto - Blanco roto
+textColor = "#FAFAFA"
+
+# Fuente moderna
+font = "sans serif"
