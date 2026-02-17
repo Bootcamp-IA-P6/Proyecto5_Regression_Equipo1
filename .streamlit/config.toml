@@ -5,10 +5,10 @@
 primaryColor = "#E800FF"
 
 # Fondo principal - Púrpura medio (coherente con sidebar)
-backgroundColor = "#764ba2"
+backgroundColor = "#8E77B7"
 
 # Fondo secundario - Púrpura oscuro para widgets
-secondaryBackgroundColor = "#764ba2"
+secondaryBackgroundColor = "#7A63A8"
 
 # Color del texto - Blanco roto
 textColor = "#FAFAFA"

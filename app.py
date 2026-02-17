@@ -47,6 +47,7 @@ st.markdown("""
     [data-testid="stSidebar"] label {
         color: white !important;
         font-family: 'Poppins', sans-serif;
+        font-size: 1.5em;
     }
     
     /* ====== OCULTAR BLOQUES VACÍOS - SOLUCIÓN DEFINITIVA ====== */
@@ -236,7 +237,10 @@ lottie_robot = load_lottiefile("assets/niu.json")
 
 # 2. Selector de Modelo en el Sidebar
 with st.sidebar:
-    st.title("Settings")
+    st.markdown(
+        "<h2 style='text-align: center; font-size: 40px;'>OPCIONES</h2>",
+        unsafe_allow_html=True
+    )
     tipo_modelo = st.radio(
         "Elige el modelo:",
         ["Completo", "Básico"]
