@@ -1,0 +1,14 @@
+[theme]
+# Fondo principal muy oscuro para que resalten los colores
+backgroundColor="#0E0B16" 
+
+# Color de los widgets y controles secundarios (un púrpura oscuro)
+secondaryBackgroundColor="#241B35" 
+
+# El color principal para botones y acentos (el magenta brillante de la foto)
+primaryColor="#E800FF" 
+
+# Color del texto principal para que sea legible
+textColor="#FAFAFA" 
+
+font="sans serif"
