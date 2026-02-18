@@ -94,6 +94,7 @@ header[data-testid="stHeader"] {
 [data-testid="stSidebar"] span {
     color: var(--text) !important;
     font-family: 'DM Sans', sans-serif !important;
+    font-size: 1.1rem !important;
 }
 
 /* Sección separadora sidebar */
@@ -141,7 +142,7 @@ header[data-testid="stHeader"] {
     border-radius: var(--radius-sm) !important;
     color: var(--text) !important;
     font-family: 'DM Mono', monospace !important;
-    font-size: 1.1rem !important;
+    font-size: 1rem !important;
     font-weight: 500 !important;
     transition: border-color 0.2s !important;
 }
@@ -162,6 +163,7 @@ header[data-testid="stHeader"] {
     border: 1px solid var(--slate-md) !important;
     border-radius: var(--radius-sm) !important;
     color: var(--text) !important;
+    font-size: 0.82rem !important;
 }
 
 /* Labels generales de inputs */
@@ -191,6 +193,9 @@ header[data-testid="stHeader"] {
     transition: all 0.25s ease !important;
     box-shadow: 0 4px 20px var(--gold-glow) !important;
     cursor: pointer !important;
+}
+.stButton > button p {
+    font-size: 1.5rem !important;
 }
 
 .stButton > button:hover {
@@ -329,7 +334,7 @@ with st.sidebar:
 
     # ── Selector de modelO
     st.markdown("""
-        <div style="font-size:1.2rem;color:#64748B;text-transform:uppercase;
+        <div style="font-size:1.4rem;color:#64748B;text-transform:uppercase;
                     letter-spacing:0.1em;font-weight:600;margin-bottom:8px;">
             Modelo de predicción
         </div>
@@ -345,7 +350,7 @@ with st.sidebar:
 
     # ── Inputs del estudiante 
     st.markdown("""
-        <div style="font-size:1.2rem;color:#64748B;text-transform:uppercase;
+        <div style="font-size:1.4rem;color:#64748B;text-transform:uppercase;
                     letter-spacing:0.1em;font-weight:600;margin-bottom:16px;">
             Datos del estudiante
         </div>
@@ -376,12 +381,12 @@ with st.sidebar:
             border:1px solid rgba(245,158,11,0.2);
             border-radius:10px;
             padding:10px 14px;
-            font-size:0.78rem;
+            font-size:1.1rem;
             color:#94A3B8;
             text-align:center;
         ">
             Modelo activo<br>
-            <span style="color:#F59E0B;font-weight:600;font-size:1rem;">
+            <span style="color:#F59E0B;font-weight:600;font-size:0.98rem;">
                 {'✦ Completo' if tipo_modelo == 'Completo' else '◈ Básico'}
             </span>
         </div>
@@ -663,4 +668,4 @@ else:
             st.error(f"⚠️ Error en la predicción: {e}")
 
     else:
-        st.warning("⚠️ No se pudo cargar el modelo. Asegúrate de que el archivo `.pkl` existe en `/notebooks`.")
+        st.warning("⚠️ No se pudo cargar el modelo.")
