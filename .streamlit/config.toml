@@ -1,17 +1,17 @@
 [theme]
-# Paleta de colores PÚRPURA coherente
+# Paleta AZUL NOCHE + ÁMBAR DORADO — estilo profesional dark mode
 
-# Color primario - Magenta neón para botones
-primaryColor = "#E800FF"
+# Acento principal — ámbar dorado para botones y highlights
+primaryColor = "#F59E0B"
 
-# Fondo principal - Púrpura medio (coherente con sidebar)
-backgroundColor = "#8E77B7"
+# Fondo principal — azul noche profundo
+backgroundColor = "#0F172A"
 
-# Fondo secundario - Púrpura oscuro para widgets
-secondaryBackgroundColor = "#7A63A8"
+# Fondo secundario — slate oscuro para widgets y sidebar
+secondaryBackgroundColor = "#1E293B"
 
-# Color del texto - Blanco roto
-textColor = "#FAFAFA"
+# Texto — blanco roto suave
+textColor = "#E2E8F0"
 
 # Fuente moderna
 font = "sans serif"
