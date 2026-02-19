@@ -288,10 +288,61 @@ hr {
 }
 
 /* ── SCROLLBAR CUSTOM ─────────────────────────────────────── */
-::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar { width: 10px; }
 ::-webkit-scrollbar-track { background: var(--navy); }
 ::-webkit-scrollbar-thumb { background: var(--slate-md); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+
+  /* ── RADIO TIPO TOGGLE ────────────────────────────────────── */
+[data-testid="stSidebar"] div[role="radiogroup"] {
+    display: flex !important;
+    flex-direction: row !important;
+    background: var(--navy) !important;
+    border: 1px solid var(--glass-border) !important;
+    border-radius: var(--radius-sm) !important;
+    padding: 4px !important;
+    gap: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+[data-testid="stSidebar"] div[role="radiogroup"] label {
+    flex: 1 1 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 8px !important;
+    padding: 8px 4px !important;
+    font-size: 0.95rem !important;
+    font-weight: 500 !important;
+    color: var(--text-dim) !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    white-space: nowrap !important;
+    min-width: 0 !important;
+}
+
+/* Ocultar el círculo del radio en TODAS las opciones */
+[data-testid="stSidebar"] div[role="radiogroup"] label > div:first-child,
+[data-testid="stSidebar"] div[role="radiogroup"] label > span:first-child,
+[data-testid="stSidebar"] div[role="radiogroup"] input[type="radio"] {
+    display: none !important;
+}
+
+/* Opción seleccionada */
+[data-testid="stSidebar"] div[role="radiogroup"] label:has(input:checked) {
+    background: var(--gold) !important;
+    color: var(--navy) !important;
+    font-weight: 700 !important;
+}
+            
+/* ── Ocultar botón colapsar sidebar ──────────────────────── */
+[data-testid="collapsedControl"],
+button[kind="header"],
+[data-testid="stSidebarCollapseButton"] {
+    display: none !important;
+    visibility: hidden !important;
+}
 
 </style>
 """, unsafe_allow_html=True)
@@ -343,8 +394,9 @@ with st.sidebar:
     tipo_modelo = st.radio(
         label="Modelo",
         options=["Completo", "Básico"],
-        label_visibility="collapsed"
-    )
+        label_visibility="collapsed",
+        horizontal= True,
+        )
 
     st.markdown("---")
 
@@ -356,13 +408,14 @@ with st.sidebar:
         </div>
     """, unsafe_allow_html=True)
 
-    horas_estudio = st.number_input("📚 Horas de estudio", 0, 24, 5)
+    horas_estudio = st.slider("📚 Horas de estudio", 0, 24, 5)
     promedio_anterior = st.slider("📊 Promedio anterior", 0, 100, 70)
 
     if tipo_modelo == "Completo":
+        
+        horas_sueno      = st.slider("😴 Horas de sueño", 0, 24, 7)
+        examenes_practica = st.slider("📝 Exámenes de práctica", 0, 50, 2)
         extracurriculares = st.selectbox("🎯 Actividades extracurriculares", ["No", "Sí"])
-        horas_sueno      = st.number_input("😴 Horas de sueño", 0, 24, 7)
-        examenes_practica = st.number_input("📝 Exámenes de práctica", 0, 50, 2)
         extra_val        = 1 if extracurriculares == "Sí" else 0
         datos_para_df    = [horas_estudio, promedio_anterior, extra_val, horas_sueno, examenes_practica]
     else:
@@ -619,7 +672,45 @@ else:
                     margin=dict(l=20, r=20, t=20, b=20),
                     height=280,
                 )
+                
+                
+
                 st.plotly_chart(fig_gauge, use_container_width=True)
+
+            st.write("### 🧮 Ecuación de Regresión")
+            st.write("A continuación se muestra la fórmula real utilizada por el modelo para calcular la predicción:")
+            c = model.coef_
+            i = model.intercept_
+
+            if tipo_modelo == "Completo":
+                st.latex(
+                    fr"Rendimiento = {i:.2f} "
+                    fr"+ ({c[0]:.2f} \cdot Horas) "
+                    fr"+ ({c[1]:.2f} \cdot Puntaje) "
+                    fr"+ ({c[2]:.2f} \cdot Extra) "
+                    fr"+ ({c[3]:.2f} \cdot Sue\tilde{{n}}o) "
+                    fr"+ ({c[4]:.2f} \cdot Ex\acute{{a}}menes)"
+                )
+                st.info(f"""
+                **Análisis de los coeficientes:**
+                * **Horas de estudio:** Cada hora adicional suma **{c[0]:.2f}** puntos.
+                * **Puntaje anterior:** Es el factor con mayor rango de influencia en el resultado final.
+                * **Actividades extracurriculares:** Aporta **{c[2]:.2f}** puntos.
+                * **Horas de sueño:** Cada hora suma **{c[3]:.2f}** puntos.
+                * **Exámenes de práctica:** Cada examen suma **{c[4]:.2f}** puntos.
+                """)
+            else:
+                st.latex(
+                    fr"Rendimiento = {i:.2f} "
+                    fr"+ ({c[0]:.2f} \cdot Horas) "
+                    fr"+ ({c[1]:.2f} \cdot Puntaje)"
+                )
+                st.info(f"""
+                **Análisis de los coeficientes:**
+                * **Horas de estudio:** Cada hora adicional suma **{c[0]:.2f}** puntos.
+                * **Puntaje anterior:** Es el factor con mayor rango de influencia en el resultado final.
+                """)
+
 
         except Exception as e:
             st.error(f"⚠️ Error en la predicción: {e}")
