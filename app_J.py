@@ -86,11 +86,11 @@ if "history" not in st.session_state:
 
 MODELS = {
     "Linear Regression": {
-        "path": "notebooks/modelo_performance.pkl",
+        "path": "notebooks/modelo_multiple.pkl",
         "r2": 0.9890, "mae": 1.61
     },
     "Random Forest": {
-        "path": "notebooks/modelo_performance_copy.pkl",
+        "path": "notebooks/modelo_notas.pkl",
         "r2": 0.000, "mae": 00.0
     },
 }
