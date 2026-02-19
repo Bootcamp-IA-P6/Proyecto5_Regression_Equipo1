@@ -456,51 +456,8 @@ if not predict_btn:
     with main_placeholder.container():
 
         if lottie_robot:
-            # col_anim, col_info = st.columns([1.2, 1], gap="large")
-
-            # with col_anim:
-                st_lottie(lottie_robot, height=580, key="robot_inicio")
-
-            # with col_info:
-            #     st.markdown("""
-            #         <div style="padding:10px 0;">
-            #             <h2 style="color:#E2E8F0;font-size:1.6rem;margin-bottom:6px;">
-            #                 ¿Cómo funciona?
-            #             </h2>
-            #             <p style="color:#94A3B8;font-size:0.9rem;line-height:1.7;margin-bottom:20px;">
-            #                 Este predictor usa regresión lineal entrenada sobre datos 
-            #                 reales de estudiantes para estimar el <em style="color:#F59E0B;">Performance Index</em> (0–100).
-            #             </p>
-            #         </div>
-            #     """, unsafe_allow_html=True)
-
-            #     # Tarjetas de info
-            #     items = [
-            #         ("📚", "Horas de estudio", "Factor con mayor impacto positivo"),
-            #         ("📊", "Promedio anterior", "Correlación alta con el resultado"),
-            #         ("😴", "Sueño y extras", "Solo en el modelo completo"),
-            #     ]
-            #     for icon, titulo, desc in items:
-            #         st.markdown(f"""
-            #         <div style="
-            #         background:rgba(30,41,59,0.7);
-            #         border:1px solid rgba(245,158,11,0.15);
-            #         border-radius:12px;
-            #         padding:14px 18px;
-            #         margin-bottom:10px;
-            #         display:flex;
-            #         align-items:center;
-            #         gap:14px;
-            #         ">
-            #         <span style="font-size:1.5rem;">{icon}</span>
-            #         <div>
-            #         <div style="color:#E2E8F0;font-weight:600;font-size:0.9rem;">{titulo}</div>
-            #         <div style="color:#64748B;font-size:0.78rem;margin-top:2px;">{desc}</div>
-            #         </div>
-            #         </div>
-            #         """, unsafe_allow_html=True)
-        # else:
-        #     st.info("🤖 Configura los datos en el panel izquierdo y pulsa **Predecir**.")
+         
+                        st_lottie(lottie_robot, height=580, key="robot_inicio")
 
 else:
     
