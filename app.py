@@ -9,6 +9,24 @@ import plotly.graph_objects as go
 from datetime import datetime
 
 
+# CONFIGURACIÓN JSON
+
+HISTORY_FILE = "../Proyecto5_Regression_Equipo1/assets/history.json"
+
+def load_history():
+    if os.path.exists(HISTORY_FILE):
+        with open(HISTORY_FILE, "r") as f:
+            data = json.load(f)
+            return data if isinstance(data, list) else []
+    return []
+
+def save_history(new_record):
+    existing = load_history()
+    existing.insert(0, new_record)
+    existing = existing[:50]
+    with open(HISTORY_FILE, "w") as f:
+        json.dump(existing, f)
+
 #  CONFIGURACIÓN DE PÁGINA
 
 st.set_page_config(
@@ -368,7 +386,7 @@ def load_selected_model(name):
 # History
 
 if "history" not in st.session_state:
-    st.session_state.history = []
+    st.session_state.history = load_history()[:8]  # muestra solo los últimos 8
 if "last_prediction" not in st.session_state:
     st.session_state.last_prediction = None
 
@@ -417,13 +435,13 @@ with st.sidebar:
         </div>
     """, unsafe_allow_html=True)
 
-    horas_estudio = st.slider("📚 Horas de estudio", 0, 24, 5)
-    promedio_anterior = st.slider("📊 Promedio anterior", 0, 100, 70)
+    horas_estudio = st.slider("📚 Horas de estudio", 0, 9, 5)
+    promedio_anterior = st.slider("📊 Promedio anterior", 0, 99, 70)
 
     if tipo_modelo == "Completo":
         
-        horas_sueno      = st.slider("😴 Horas de sueño", 0, 24, 7)
-        examenes_practica = st.slider("📝 Exámenes de práctica", 0, 50, 2)
+        horas_sueno      = st.slider("😴 Horas de sueño", 0, 9, 7)
+        examenes_practica = st.slider("📝 Exámenes de práctica", 0, 9, 2)
         extracurriculares = st.selectbox("🎯 Actividades extracurriculares", ["No", "Sí"])
         extra_val        = 1 if extracurriculares == "Sí" else 0
         datos_para_df    = [horas_estudio, promedio_anterior, extra_val, horas_sueno, examenes_practica]
@@ -518,6 +536,7 @@ if predict_btn and model:
     df_input = pd.DataFrame([datos_para_df], columns=columnas_modelo)
     try:
         prediction = model.predict(df_input)[0]
+        prediction = max(0.0, min(100.0, prediction))
         nivel = "Alto" if prediction >= 70 else ("Medio" if prediction >= 45 else "Bajo")
         nivel_color  = "#22C55E" if prediction >= 70 else ("#F59E0B" if prediction >= 45 else "#EF4444")
         nivel_bg     = "rgba(34,197,94,0.1)"  if prediction >= 70 else ("rgba(245,158,11,0.1)" if prediction >= 45 else "rgba(239,68,68,0.1)")
@@ -543,15 +562,18 @@ if predict_btn and model:
 # ── Guardar en historial ───────────────────────────────────
 if save_btn and st.session_state.last_prediction:
     lp = st.session_state.last_prediction
-    st.session_state.history.insert(0, {
+    new_record = {
         "score":  lp["score"],
         "modelo": lp["modelo"],
         "horas":  lp["horas"],
         "prev":   lp["prev"],
         "nivel":  lp["nivel"],
         "time":   datetime.now().strftime("%H:%M:%S")
-    })
+    }
+    save_history(new_record)                          # guarda en JSON
+    st.session_state.history.insert(0, new_record)   # actualiza pantalla
     st.session_state.history = st.session_state.history[:8]
+
 
 # ── Mostrar resultados o lottie ────────────────────────────
 if st.session_state.last_prediction:
@@ -666,6 +688,7 @@ if st.session_state.history:
     with col_clear:
         if st.button("🗑️ Limpiar"):
             st.session_state.history = []
+            st.session_state.last_prediction = None
             st.rerun()
 
     for h in st.session_state.history:
@@ -688,15 +711,3 @@ if st.session_state.history:
             <div style="color:#475569;font-size:0.72rem">{h['time']}</div>
         </div>
         """, unsafe_allow_html=True)
-
-    if len(st.session_state.history) >= 2:
-        scores_h = [h["score"] for h in reversed(st.session_state.history)]
-        times_h  = [h["time"]  for h in reversed(st.session_state.history)]
-        colors_h = ["#22C55E" if s >= 70 else ("#F59E0B" if s >= 45 else "#EF4444") for s in scores_h]
-        fig_hist = go.Figure()
-        fig_hist.add_trace(go.Scatter(x=times_h, y=scores_h, fill="tozeroy", fillcolor="rgba(245,158,11,0.06)", line=dict(width=0), showlegend=False, hoverinfo="skip"))
-        fig_hist.add_trace(go.Scatter(x=times_h, y=scores_h, mode="lines+markers", line=dict(color="#F59E0B", width=3, shape="spline", smoothing=1.2), marker=dict(size=10, color=colors_h, line=dict(color="#0F172A", width=2)), text=[f"{s} pts" for s in scores_h], hovertemplate="<b>%{text}</b><br>%{x}<extra></extra>", showlegend=False))
-        for thr, lbl, col in [(70,"Alto","#22C55E"),(45,"Medio","#F59E0B")]:
-            fig_hist.add_hline(y=thr, line_dash="dot", line_color=col, opacity=0.4, annotation_text=lbl, annotation_position="right", annotation_font=dict(color=col, size=10))
-        fig_hist.update_layout(paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)", margin=dict(l=10,r=60,t=10,b=10), height=220, xaxis=dict(showgrid=False, tickfont=dict(color="#475569", size=10)), yaxis=dict(range=[0,105], gridcolor="rgba(255,255,255,0.05)", tickfont=dict(color="#475569", size=10)))
-        st.plotly_chart(fig_hist, width='stretch')
