@@ -1,0 +1,17 @@
+[theme]
+# Paleta AZUL NOCHE + ÁMBAR DORADO — estilo profesional dark mode
+
+# Acento principal — ámbar dorado para botones y highlights
+primaryColor = "#F59E0B"
+
+# Fondo principal — azul noche profundo
+backgroundColor = "#0F172A"
+
+# Fondo secundario — slate oscuro para widgets y sidebar
+secondaryBackgroundColor = "#1E293B"
+
+# Texto — blanco roto suave
+textColor = "#E2E8F0"
+
+# Fuente moderna
+font = "sans serif"
