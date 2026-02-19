@@ -15,6 +15,7 @@ Es importante destacar que este dataset es sintético y fue creado con fines ilu
 
 Por lo tanto, las relaciones observadas representan patrones simulados y no necesariamente reflejan dinámicas reales del mundo académico. Sin embargo, el conjunto de datos resulta adecuado para fines educativos y para la aplicación de técnicas de modelado predictivo.
 
+
 ---
 
 ## 2. Estadísticas Descriptivas (Describe)
@@ -56,6 +57,9 @@ Estudiamos la relación entre los factores y el rendimiento final mediante una m
    - Relación positiva moderada. Es la variable **accionable** más importante: aunque no define el 100% de la nota, es el factor que el estudiante puede cambiar para mejorar.
 3. **Otros factores (Sueño, Actividades, Exámenes):**
    - Presentan correlaciones muy bajas (< 0.05). Esto indica que, de forma aislada, no garantizan un cambio drástico en la nota, sino que actúan como complementos.
+
+
+   ![correlacion](../assets/img_de_correlacion.png)
 
 
 ### 📐 Evaluación de Multicolinealidad
