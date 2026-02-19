@@ -207,27 +207,33 @@ La aplicación se abrirá en `http://localhost:8501`. Selecciona el modelo en el
 ## 📁 Estructura del Proyecto
 
 ```
-proyecto5_regression_equipo1/
+Proyecto5_Regression_Equipo1/
 │
-├── 📂 data/
-│   └── student_performance.csv          # Dataset original
-│
-├── 📂 notebooks/
-│   ├── eda_miembro1.ipynb               # EDA individual — Miembro 1
-│   ├── eda_miembro2.ipynb               # EDA individual — Miembro 2
-│   ├── eda_miembro3.ipynb               # EDA individual — Miembro 3
-│   ├── model_miembro1.ipynb             # Entrenamiento individual — Miembro 1
-│   ├── model_miembro2.ipynb             # Entrenamiento individual — Miembro 2
-│   ├── model_miembro3.ipynb             # Entrenamiento individual — Miembro 3
-│   ├── modelo_multiple.pkl              # Modelo completo exportado ✦
-│   └── modelo_notas.pkl                 # Modelo básico exportado ◈
+├── 📂 .streamlit/
+│   └── config.toml                              # Configuración de tema y servidor
 │
 ├── 📂 assets/
-│   └── niu.json                         # Animación Lottie (pantalla inicio)
+│   └── niu.json                                 # Animación Lottie (pantalla de inicio)
 │
-├── app.py                               # Aplicación Streamlit principal
-├── requirements.txt
+├── 📂 data/
+│   └── Student_Performance.csv                  # Dataset original
+│
+├── 📂 notebooks/
+│   ├── 01_eda_student_g.ipynb                   # EDA individual — Miembro G
+│   ├── 02_entrenamiento_modelo_g.ipynb          # Entrenamiento individual — Miembro G
+│   ├── horas_estudio_sueno_I.ipynb              # EDA + entrenamiento — Miembro I
+│   ├── student_perfomance_regression_j.ipynb    # EDA + entrenamiento — Miembro J
+│   ├── student_perfomance_regression_m.ipynb    # EDA + entrenamiento — Miembro M
+│   ├── modelo_multiple.pkl                      # Modelo completo exportado ✦
+│   └── modelo_notas.pkl                         # Modelo básico exportado ◈
+│
+├── 📂 reports/
+│   └── ...                                      # Informes y análisis finales
+│
+├── app.py                                       # Aplicación Streamlit principal
+├── pyproject.toml
 └── README.md
+
 ```
 
 ---
@@ -235,6 +241,20 @@ proyecto5_regression_equipo1/
 ## 👥 Equipo
 
 Proyecto desarrollado en equipo como parte del aprendizaje de técnicas de Machine Learning aplicadas a datos reales.
+
+
+| Desarrolladores | GitHub | LinkedIn |
+|----------------|--------|----------|
+| **Mirae Kang** | [GitHub](https://github.com/KangMirae) | [LinkedIn](https://www.linkedin.com/in/kangmirae/) |
+| **Gema Yébenes** | [GitHub](https://github.com/gemayc) | [LinkedIn](https://www.linkedin.com/in/gemayebenes-tech/) |
+| **Jonathan Brasales** | [GitHub](https://github.com/JonnyBP) | [LinkedIn](https://www.linkedin.com/in/jbrasales/) |
+| **Ingrid Martínez** | [GitHub](https://github.com/IngridMartinezB) | [LinkedIn](https://www.linkedin.com/in/ingridmartinezb/) |
+
+
+
+**Bootcamp:** Inteligencia Artificial 
+**Organización:**  Factoría F5  
+**Año:** 2026
 
 ---
 
