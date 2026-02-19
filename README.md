@@ -95,6 +95,11 @@ Los análisis exploratorios del equipo convergieron en los siguientes *insights*
 ## 🖥️ Interfaz de la Aplicación
 
 La app está construida con **Streamlit** y tiene un diseño oscuro personalizado con paleta *navy + gold*, tipografía **DM Sans / DM Mono** y efectos glassmorphism.
+ <div align="center">
+  <img src="./assets/image.png" width="48%" />
+  &nbsp;&nbsp;
+  <img src="./assets/image1.png" width="48%" />
+</div>
 
 ### Panel Lateral — Sidebar
 
