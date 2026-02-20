@@ -117,7 +117,7 @@ El sidebar es el **centro de control** de la aplicación. Desde aquí el usuario
 | 😴 Horas de sueño (`number_input`, 0–24) | ❌ | ✅ |
 | 📝 Exámenes de práctica (`number_input`, 0–50) | ❌ | ✅ |
 
-**⚡ Botón "Predecir rendimiento"`** — Botón dorado de ancho completo que lanza la predicción. Al pulsarlo, la zona central se transforma y muestra los resultados.
+**`⚡ Botón "Predecir rendimiento"`** — Botón dorado de ancho completo que lanza la predicción. Al pulsarlo, la zona central se transforma y muestra los resultados.
 
 **`💾 Botón "Guardar predicción"`** — Permite almacenar el resultado de cada predicción en un archivo `historial_predicciones.json` local. Cada entrada registra el score estimado, el modelo    utilizado (Completo o Básico), las horas de estudio, el promedio anterior y la marca de tiempo.
 
