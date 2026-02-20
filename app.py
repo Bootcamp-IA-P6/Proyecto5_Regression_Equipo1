@@ -11,7 +11,7 @@ from datetime import datetime
 
 # CONFIGURACIÓN JSON
 
-HISTORY_FILE = "../Proyecto5_Regression_Equipo1/assets/history.json"
+HISTORY_FILE = "./assets/history.json"
 
 def load_history():
     if os.path.exists(HISTORY_FILE):
