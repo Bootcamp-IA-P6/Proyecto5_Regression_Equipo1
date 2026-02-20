@@ -118,16 +118,11 @@ El sidebar es el **centro de control** de la aplicación. Desde aquí el usuario
 | 📝 Exámenes de práctica (`number_input`, 0–50) | ❌ | ✅ |
 
 **`⚡ Botón "Predecir rendimiento"`** — Botón dorado de ancho completo que lanza la predicción. Al pulsarlo, la zona central se transforma y muestra los resultados.
-**`💾 Botón "Guardar predicción"`** — Permite almacenar el resultado de cada predicción en un archivo
-`historial_predicciones.json` local. Cada entrada registra el score estimado, el modelo utilizado
-(Completo o Básico), las horas de estudio, el promedio anterior y la marca de tiempo.
-
+**`💾 Botón "Guardar predicción"`** — Permite almacenar el resultado de cada predicción en un archivo `historial_predicciones.json` local. Cada entrada registra el score estimado, el modelo    utilizado (Completo o Básico), las horas de estudio, el promedio anterior y la marca de tiempo.
 **`📋 Historial de predicciones`** — Panel que muestra todas las predicciones guardadas en orden
 cronológico inverso. Cada tarjeta indica el score con su nivel de rendimiento (Alto / Medio / Bajo),
 el modelo usado, las horas de estudio, el promedio anterior y la hora exacta en que se realizó la predicción.
-
 **`ℹ️ Badge de modelo activo`** — Indicador visual en la parte inferior del sidebar que confirma qué modelo está cargado (`✦ Completo` o `◈ Básico`).
-
 ---
 
 ### Zona Principal — Pantalla de Inicio
